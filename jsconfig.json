@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "checkJs": false,
+    "moduleResolution": "bundler",
+    "types": ["node"]
+  },
+  "include": ["**/*.js"],
+  "exclude": ["node_modules"]
+}
