@@ -22,5 +22,5 @@ test("Adding To Cart", async ({ page }) => {
   await checkoutLink.click();
 
   await page.waitForURL("/basket");
-  await page.pause();
+  //await page.pause();
 });
