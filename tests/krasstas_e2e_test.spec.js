@@ -1,3 +1,8 @@
 import { test } from "@playwright/test";
+import { ProductsPage } from "../page-objects/ProductPage";
 
-test("New Full E2E Test", async ({ page }) => {});
+test.only("New Full E2E Test", async ({ page }) => {
+  const productsPage = new ProductsPage(page);
+  await productsPage.visit();
+  await page.pause;
+});
