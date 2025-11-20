@@ -4,5 +4,5 @@ import { ProductsPage } from "../page-objects/ProductPage";
 test.only("New Full E2E Test", async ({ page }) => {
   const productsPage = new ProductsPage(page);
   await productsPage.visit();
-  await page.pause;
+  await page.pause();
 });
