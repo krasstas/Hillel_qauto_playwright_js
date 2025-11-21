@@ -18,9 +18,7 @@ test("Adding To Cart", async ({ page }) => {
 
   const checkoutLink = page.getByRole("link", { name: "Checkout" });
   await checkoutLink.waitFor();
-
   await checkoutLink.click();
-
   await page.waitForURL("/basket");
   //await page.pause();
 });
