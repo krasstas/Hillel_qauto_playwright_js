@@ -1,9 +1,9 @@
 import { test } from "@playwright/test";
-import { ProductsPage } from "../page-objects/ProductPage";
+import { ProductsPageCopy } from "../page-objects/ProductsPageCopy";
 
 test("NEW E2E Test By KraSStaS", async ({ page }) => {
   // ProductsPage.visit();
-  const productsPage = new ProductsPage(page);
-  await productsPage.visit();
+  const productsPageCopy = new ProductsPageCopy(page);
+  await productsPageCopy.visit();
   await page.pause();
 });
