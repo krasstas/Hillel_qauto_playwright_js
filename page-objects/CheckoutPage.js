@@ -12,7 +12,14 @@ export class CheckoutPage {
     await this.basketCards.first().waitFor();
     await this.baskeItemPrice.first().waitFor();
     const allPriceTexts = await this.baskeItemPrice.allInnerTexts();
+    //  [ '499$', '599$', '320$' ] --> [ 499, 599, 320 ]
+    const justNumbers = allPriceTexts.map((element) => {
+      const withoutDollarSign = element.replace("$", "");
+      return parseInt(withoutDollarSign, 10);
+    });
+
     console.warn({ allPriceTexts });
+    console.warn({ justNumbers });
     await this.page.pause();
   };
 }
