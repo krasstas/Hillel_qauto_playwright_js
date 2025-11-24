@@ -18,8 +18,13 @@ export class CheckoutPage {
       return parseInt(withoutDollarSign, 10);
     });
 
-    console.warn({ allPriceTexts });
-    console.warn({ justNumbers });
+    const smallestPrice = Math.min(...justNumbers);
+    const smallestPriceIndx = justNumbers.indexOf(smallestPrice);
+    const specificRemoveButton =
+      this.basketItemRemoveButton.nth(smallestPriceIndx);
+    await specificRemoveButton.waitFor();
+    await specificRemoveButton.click();
+    console.warn(justNumbers);
     await this.page.pause();
   };
 }
