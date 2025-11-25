@@ -17,5 +17,5 @@ test.only("New Full E2E Test", async ({ page }) => {
   const checkoutPage = new CheckoutPage(page);
   await checkoutPage.removeCheapestProduct();
 
-  await page.pause();
+  // await page.pause();
 });
