@@ -8,6 +8,9 @@ export class CheckoutPage {
     this.basketItemRemoveButton = page.locator(
       '[data-qa="basket-card-remove-item"]'
     );
+    this.continueToCheckoutButton = page.locator(
+      '[data-qa="continue-to-checkout"]'
+    );
   }
   removeCheapestProduct = async () => {
     await this.basketCards.first().waitFor();
@@ -29,6 +32,12 @@ export class CheckoutPage {
     await specificRemoveButton.click();
     await expect(this.basketCards).toHaveCount(itemBeforeRemoval - 1);
     console.warn({ justNumbers });
-    // await this.page.pause();
   };
+
+  continueToCheckout = async () => {
+    await this.continueToCheckoutButton.waitFor();
+    await this.continueToCheckoutButton.click();
+    await this.page.waitForURL(/\/login/, { timeout: 3000 });
+  };
+  // await this.page.pause();
 }
