@@ -8,6 +8,6 @@ export class LoginPage {
   moveToSignupPage = async () => {
     await this.moveToSignupButton.waitFor();
     await this.moveToSignupButton.click();
-    await this.page.waitForURL(/\/login/, { timeout: 3000 });
+    await this.page.waitForURL(/\/signup/, { timeout: 3000 });
   };
 }
