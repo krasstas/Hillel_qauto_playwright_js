@@ -2,6 +2,7 @@ import { test } from "@playwright/test";
 import { ProductsPage } from "../page-objects/ProductsPage.js";
 import { HeaderPage } from "../page-objects/HeaderPage.js";
 import { CheckoutPage } from "../page-objects/CheckoutPage.js";
+import { LoginPage } from "../page-objects/LoginPage.js";
 
 test.only("New Full E2E Test", async ({ page }) => {
   const productsPage = new ProductsPage(page);
@@ -17,6 +18,9 @@ test.only("New Full E2E Test", async ({ page }) => {
   const checkoutPage = new CheckoutPage(page);
   await checkoutPage.removeCheapestProduct();
   await checkoutPage.continueToCheckout();
+
+  const loginPage = new LoginPage(page);
+  await loginPage.moveToSignupPage();
 
   // await page.pause();
 });
