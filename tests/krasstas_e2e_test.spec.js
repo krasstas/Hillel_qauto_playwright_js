@@ -6,6 +6,7 @@ import { CheckoutPage } from "../page-objects/CheckoutPage.js";
 test.only("New Full E2E Test", async ({ page }) => {
   const productsPage = new ProductsPage(page);
   await productsPage.visit();
+  await productsPage.sortByCheapest();
   await productsPage.addItemToCart(0);
   await productsPage.addItemToCart(1);
   await productsPage.addItemToCart(2);
