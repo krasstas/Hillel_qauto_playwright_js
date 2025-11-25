@@ -39,5 +39,4 @@ export class CheckoutPage {
     await this.continueToCheckoutButton.click();
     await this.page.waitForURL(/\/login/, { timeout: 3000 });
   };
-  // await this.page.pause();
 }
