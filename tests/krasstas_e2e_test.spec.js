@@ -9,6 +9,7 @@ test.only("New Full E2E Test", async ({ page }) => {
   await productsPage.addItemToCart(0);
   await productsPage.addItemToCart(1);
   await productsPage.addItemToCart(2);
+
   const headerPage = new HeaderPage(page);
   await headerPage.goToCheckout();
 
