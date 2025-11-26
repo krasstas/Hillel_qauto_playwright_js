@@ -1,6 +1,3 @@
-// import { v4 as uuidv4 } from "uuid";
-import { faker } from "@faker-js/faker";
-
 export class RegisterPage {
   constructor(page) {
     this.page = page;
@@ -10,29 +7,17 @@ export class RegisterPage {
     this.registerButton = page.getByRole("button", { name: "Register" });
   }
 
-  signUpAsNewUser = async () => {
+  signUpAsNewUser = async (email, password) => {
     await this.emailInput.waitFor();
-    // const emailId = uuidv4();
-    // const email = emailId + "@testmail.com";
-    const email = faker.internet.email({ provider: "testmail.com" });
-    this.emailInput.fill(email);
+    await this.emailInput.fill(email);
     await this.passwordInput.waitFor();
-
-    let pswrd = faker.internet.password({
-      length: faker.number.int({ min: 8, max: 15 }),
-      exclude: " ",
-    });
-    while (!/[a-z]/.test(pswrd) || !/[A-Z]/.test(pswrd) || !/\d/.test(pswrd)) {
-      pswrd = faker.internet.password({
-        length: faker.number.int({ min: 8, max: 15 }),
-        exclude: " ",
-      });
-    }
-
-    const password = pswrd;
-    this.passwordInput.fill(password);
+    await this.passwordInput.fill(password);
     await this.registerButton.waitFor();
-    await this.page.pause();
-    this.registerButton.click();
+
+    await this.page.waitForTimeout(1000);
+
+    await this.registerButton.click();
+
+    await this.page.waitForTimeout(3000);
   };
 }
