@@ -22,5 +22,5 @@ test.only("New Full E2E Test", async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.moveToSignupPage();
 
-  // await page.pause();
+  await page.pause();
 });

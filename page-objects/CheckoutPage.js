@@ -17,12 +17,14 @@ export class CheckoutPage {
     const itemBeforeRemoval = await this.basketCards.count();
     await this.baskeItemPrice.first().waitFor();
     const allPriceTexts = await this.baskeItemPrice.allInnerTexts();
-    console.warn({ allPriceTexts });
+    // console.warn({ allPriceTexts });
+
     //  [ '499$', '599$', '320$' ] --> [ 499, 599, 320 ]
     const justNumbers = allPriceTexts.map((element) => {
       const withoutDollarSign = element.replace("$", "");
       return parseInt(withoutDollarSign, 10);
     });
+    // console.warn({ justNumbers });
 
     const smallestPrice = Math.min(...justNumbers);
     const smallestPriceIndx = justNumbers.indexOf(smallestPrice);
@@ -31,7 +33,7 @@ export class CheckoutPage {
     await specificRemoveButton.waitFor();
     await specificRemoveButton.click();
     await expect(this.basketCards).toHaveCount(itemBeforeRemoval - 1);
-    console.warn({ justNumbers });
+    // console.warn("Count of Items After Removal =", itemBeforeRemoval - 1);
   };
 
   continueToCheckout = async () => {
