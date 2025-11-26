@@ -22,12 +22,7 @@ export class RegisterPage {
       length: faker.number.int({ min: 8, max: 15 }),
       exclude: " ",
     });
-    while (
-      !/[a-z]/.test(pswrd) ||
-      !/[A-Z]/.test(pswrd) ||
-      !/\d/.test(pswrd) ||
-      !/[^A-Za-z0-9]/.test(pswrd)
-    ) {
+    while (!/[a-z]/.test(pswrd) || !/[A-Z]/.test(pswrd) || !/\d/.test(pswrd)) {
       pswrd = faker.internet.password({
         length: faker.number.int({ min: 8, max: 15 }),
         exclude: " ",
