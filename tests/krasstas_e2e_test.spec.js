@@ -3,6 +3,7 @@ import { ProductsPage } from "../page-objects/ProductsPage.js";
 import { HeaderPage } from "../page-objects/HeaderPage.js";
 import { CheckoutPage } from "../page-objects/CheckoutPage.js";
 import { LoginPage } from "../page-objects/LoginPage.js";
+import { RegisterPage } from "../page-objects/RegisterPage.js";
 
 test.only("New Full E2E Test", async ({ page }) => {
   const productsPage = new ProductsPage(page);
@@ -21,6 +22,9 @@ test.only("New Full E2E Test", async ({ page }) => {
 
   const loginPage = new LoginPage(page);
   await loginPage.moveToSignupPage();
+
+  const registerPage = new RegisterPage(page);
+  await registerPage.signUpAsNewUser();
 
   await page.pause();
 });
