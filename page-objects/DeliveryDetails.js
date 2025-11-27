@@ -1,6 +1,4 @@
 import { expect } from "@playwright/test";
-import { time } from "console";
-
 export class DeliveryDetails {
   constructor(page) {
     this.page = page;
