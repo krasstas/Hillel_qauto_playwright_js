@@ -6,6 +6,8 @@ import { HeaderPage } from "../page-objects/HeaderPage.js";
 import { CheckoutPage } from "../page-objects/CheckoutPage.js";
 import { LoginPage } from "../page-objects/LoginPage.js";
 import { RegisterPage } from "../page-objects/RegisterPage.js";
+import { DeliveryDetails } from "../page-objects/DeliveryDetails.js";
+import { deliveryDetails as usersAddress } from "../data/deliveryDetails";
 
 test.only("New Full E2E Test", async ({ page }) => {
   const productsPage = new ProductsPage(page);
@@ -25,6 +27,8 @@ test.only("New Full E2E Test", async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.moveToSignupPage();
 
+  const registerPage = new RegisterPage(page);
+
   // const emailId = uuidv4();
   // const email = emailId + "@testmail.com";
   const email = faker.internet.email({ provider: "testmail.com" });
@@ -43,9 +47,13 @@ test.only("New Full E2E Test", async ({ page }) => {
       exclude: " ",
     });
   }
-
-  const registerPage = new RegisterPage(page);
   await registerPage.signUpAsNewUser(email, password);
+
+  const deliveryDetails = new DeliveryDetails(page);
+  await deliveryDetails.fillDeliveryDetails(usersAddress);
+
+  await deliveryDetails.saveAddress();
+  await deliveryDetails.continueToPayment();
 
   // await page.pause();
 });
