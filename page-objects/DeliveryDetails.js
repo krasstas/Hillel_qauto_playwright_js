@@ -55,6 +55,10 @@ export class DeliveryDetails {
     await expect(this.saveAddressContainer).toHaveCount(
       addressContainerCount + 1
     );
+    await this.savedAddressFirstName.first().waitFor();
+    expect(await this.savedAddressFirstName.first().innerText()).toBe(
+      await this.firstNameInput.inputValue()
+    );
     await this.page.waitForTimeout(1000);
   };
 
