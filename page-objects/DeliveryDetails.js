@@ -1,5 +1,3 @@
-import { th } from "@faker-js/faker";
-
 export class DeliveryDetails {
   constructor(page) {
     this.page = page;
