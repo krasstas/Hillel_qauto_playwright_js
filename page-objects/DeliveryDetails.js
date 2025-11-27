@@ -8,6 +8,10 @@ export class DeliveryDetails {
     this.postCodeInput = page.getByPlaceholder("Post code");
     this.cityInput = page.getByPlaceholder("City");
     this.sortCountryDropdown = page.locator('[data-qa="country-dropdown"]');
+    this.saveAddressButton = page.locator('[data-qa="save-address-button"]');
+    this.continueToPaymentButton = page.locator(
+      '[data-qa="continue-to-payment-button"]'
+    );
   }
 
   fillDeliveryDetails = async (firstName, lastName, street, postCode, city) => {
@@ -23,5 +27,10 @@ export class DeliveryDetails {
     await this.cityInput.fill(city);
     await this.sortCountryDropdown.waitFor();
     await this.sortCountryDropdown.selectOption("Ukraine");
+    await this.saveAddressButton.waitFor();
+    await this.saveAddressButton.click();
+    await this.page.pause();
+    await this.continueToPaymentButton.waitFor();
+    await this.continueToPaymentButton.click();
   };
 }
