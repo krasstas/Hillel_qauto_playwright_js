@@ -7,7 +7,7 @@ export class DeliveryDetails {
     this.streetInput = page.getByPlaceholder("Street");
     this.postCodeInput = page.getByPlaceholder("Post code");
     this.cityInput = page.getByPlaceholder("City");
-    this.sortCountryDropdown = page.locator('[data-qa="country-dropdown"]');
+    this.countryDropdown = page.locator('[data-qa="country-dropdown"]');
     this.saveAddressButton = page.locator('[data-qa="save-address-button"]');
     this.continueToPaymentButton = page.locator(
       '[data-qa="continue-to-payment-button"]'
@@ -25,8 +25,8 @@ export class DeliveryDetails {
     await this.postCodeInput.fill(postCode);
     await this.cityInput.waitFor();
     await this.cityInput.fill(city);
-    await this.sortCountryDropdown.waitFor();
-    await this.sortCountryDropdown.selectOption("Ukraine");
+    await this.countryDropdown.waitFor();
+    await this.countryDropdown.selectOption("Ukraine");
     await this.saveAddressButton.waitFor();
     await this.saveAddressButton.click();
     await this.page.pause();
