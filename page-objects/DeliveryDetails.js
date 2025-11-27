@@ -21,5 +21,7 @@ export class DeliveryDetails {
     await this.postCodeInput.fill(postCode);
     await this.cityInput.waitFor();
     await this.cityInput.fill(city);
+    await this.sortCountryDropdown.waitFor();
+    await this.sortCountryDropdown.selectOption("Ukraine");
   };
 }
