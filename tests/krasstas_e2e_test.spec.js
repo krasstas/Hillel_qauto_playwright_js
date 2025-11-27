@@ -7,7 +7,7 @@ import { CheckoutPage } from "../page-objects/CheckoutPage.js";
 import { LoginPage } from "../page-objects/LoginPage.js";
 import { RegisterPage } from "../page-objects/RegisterPage.js";
 import { DeliveryDetails } from "../page-objects/DeliveryDetails.js";
-import { deliveryDetails as usersAddress } from "../data/deliveryDetails.js";
+import { deliveryDetails as usersAddress } from "../data/deliveryDetails";
 
 test.only("New Full E2E Test", async ({ page }) => {
   const productsPage = new ProductsPage(page);
@@ -50,20 +50,7 @@ test.only("New Full E2E Test", async ({ page }) => {
   await registerPage.signUpAsNewUser(email, password);
 
   const deliveryDetails = new DeliveryDetails(page);
-
-  const firstName = faker.person.firstName();
-  const lastName = faker.person.lastName();
-  const street = faker.location.streetAddress();
-  const postCode = faker.location.zipCode();
-  const city = faker.location.city();
-
-  await deliveryDetails.fillDeliveryDetails(
-    firstName,
-    lastName,
-    street,
-    postCode,
-    city
-  );
+  await deliveryDetails.fillDeliveryDetails(usersAddress);
 
   await page.pause();
 });

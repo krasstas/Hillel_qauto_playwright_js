@@ -14,17 +14,17 @@ export class DeliveryDetails {
     );
   }
 
-  fillDeliveryDetails = async (firstName, lastName, street, postCode, city) => {
+  fillDeliveryDetails = async (usersAddress) => {
     await this.firstNameInput.waitFor();
-    await this.firstNameInput.fill(firstName);
+    await this.firstNameInput.fill(usersAddress.firstName);
     await this.lastNameInput.waitFor();
-    await this.lastNameInput.fill(lastName);
+    await this.lastNameInput.fill(usersAddress.lastName);
     await this.streetInput.waitFor();
-    await this.streetInput.fill(street);
+    await this.streetInput.fill(usersAddress.street);
     await this.postCodeInput.waitFor();
-    await this.postCodeInput.fill(postCode);
+    await this.postCodeInput.fill(usersAddress.postCode);
     await this.cityInput.waitFor();
-    await this.cityInput.fill(city);
+    await this.cityInput.fill(usersAddress.city);
     await this.countryDropdown.waitFor();
     await this.countryDropdown.selectOption("Ukraine");
     await this.saveAddressButton.waitFor();

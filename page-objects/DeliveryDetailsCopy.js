@@ -1,4 +1,4 @@
-export class DeliveryDetails {
+export class DeliveryDetailsCopy {
   constructor(page) {
     this.page = page;
 
