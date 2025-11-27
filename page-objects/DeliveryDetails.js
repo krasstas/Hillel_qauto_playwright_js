@@ -55,10 +55,37 @@ export class DeliveryDetails {
     await expect(this.saveAddressContainer).toHaveCount(
       addressContainerCount + 1
     );
+
     await this.savedAddressFirstName.first().waitFor();
     expect(await this.savedAddressFirstName.first().innerText()).toBe(
       await this.firstNameInput.inputValue()
     );
+
+    await this.savedAddressLastName.first().waitFor();
+    expect(await this.savedAddressLastName.first().innerText()).toBe(
+      await this.lastNameInput.inputValue()
+    );
+
+    await this.savedAddressStreet.first().waitFor();
+    expect(await this.savedAddressStreet.first().innerText()).toBe(
+      await this.streetInput.inputValue()
+    );
+
+    await this.savedAddressPostCode.first().waitFor();
+    expect(await this.savedAddressPostCode.first().innerText()).toBe(
+      await this.postCodeInput.inputValue()
+    );
+
+    await this.savedAddressCity.first().waitFor();
+    expect(await this.savedAddressCity.first().innerText()).toBe(
+      await this.cityInput.inputValue()
+    );
+
+    await this.savedAddressCountry.first().waitFor();
+    expect(await this.savedAddressCountry.first().innerText()).toBe(
+      await this.countryDropdown.inputValue()
+    );
+
     await this.page.waitForTimeout(1000);
   };
 
