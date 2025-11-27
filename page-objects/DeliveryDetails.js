@@ -1,4 +1,5 @@
 import { expect } from "@playwright/test";
+import { time } from "console";
 
 export class DeliveryDetails {
   constructor(page) {
@@ -92,6 +93,7 @@ export class DeliveryDetails {
   continueToPayment = async () => {
     await this.continueToPaymentButton.waitFor();
     await this.continueToPaymentButton.click();
+    await this.page.waitForURL(/\/payment/, { timeout: 3000 });
     await this.page.pause();
   };
 }
