@@ -17,6 +17,20 @@ export class DeliveryDetails {
     this.saveAddressContainer = page.locator(
       '[data-qa="saved-address-container"]'
     );
+    this.savedAddressFirstName = page.locator(
+      '[data-qa="saved-address-firstName"]'
+    );
+    this.savedAddressLastName = page.locator(
+      '[data-qa="saved-address-lastName"]'
+    );
+    this.savedAddressStreet = page.locator('[data-qa="saved-address-street"]');
+    this.savedAddressPostCode = page.locator(
+      '[data-qa="saved-address-postcode"]'
+    );
+    this.savedAddressCity = page.locator('[data-qa="saved-address-city"]');
+    this.savedAddressCountry = page.locator(
+      '[data-qa="saved-address-country"]'
+    );
   }
 
   fillDeliveryDetails = async (usersAddress) => {
