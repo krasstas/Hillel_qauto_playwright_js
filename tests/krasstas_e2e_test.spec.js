@@ -48,15 +48,21 @@ test.only("New Full E2E Test", async ({ page }) => {
   }
   await registerPage.signUpAsNewUser(email, password);
 
-  // const deliveryDetails = new DeliveryDetails(page);
+  const deliveryDetails = new DeliveryDetails(page);
 
-  // await deliveryDetails.fillDeliveryDetails(
-  //   firstName,
-  //   lastName,
-  //   street,
-  //   postCode,
-  //   city
-  // );
+  const firstName = faker.person.firstName();
+  const lastName = faker.person.lastName();
+  const street = faker.location.streetAddress();
+  const postCode = faker.location.zipCode();
+  const city = faker.location.city();
 
-  // await page.pause();
+  await deliveryDetails.fillDeliveryDetails(
+    firstName,
+    lastName,
+    street,
+    postCode,
+    city
+  );
+
+  await page.pause();
 });

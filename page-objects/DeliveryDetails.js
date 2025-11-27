@@ -12,14 +12,14 @@ export class DeliveryDetails {
 
   fillDeliveryDetails = async (firstName, lastName, street, postCode, city) => {
     await this.firstNameInput.waitFor();
-    await this.firstNameInput.fill();
+    await this.firstNameInput.fill(firstName);
     await this.lastNameInput.waitFor();
-    await this.lastNameInput.fill();
+    await this.lastNameInput.fill(lastName);
     await this.streetInput.waitFor();
-    await this.streetInput.fill();
+    await this.streetInput.fill(street);
     await this.postCodeInput.waitFor();
-    await this.postCodeInput.fill();
+    await this.postCodeInput.fill(postCode);
     await this.cityInput.waitFor();
-    await this.cityInput.fill();
+    await this.cityInput.fill(city);
   };
 }
