@@ -49,7 +49,13 @@ test.only("New Full E2E Test", async ({ page }) => {
   await registerPage.signUpAsNewUser(email, password);
 
   const deliveryDetails = new DeliveryDetails(page);
-  await deliveryDetails.fillDeliveryDetails();
+  await deliveryDetails.fillDeliveryDetails(
+    firstName,
+    lastName,
+    street,
+    postCode,
+    city
+  );
 
   // await page.pause();
 });
