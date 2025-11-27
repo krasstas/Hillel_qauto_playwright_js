@@ -6,6 +6,7 @@ import { HeaderPage } from "../page-objects/HeaderPage.js";
 import { CheckoutPage } from "../page-objects/CheckoutPage.js";
 import { LoginPage } from "../page-objects/LoginPage.js";
 import { RegisterPage } from "../page-objects/RegisterPage.js";
+import { DeliveryDetails } from "../page-objects/DeliveryDetails.js";
 
 test.only("New Full E2E Test", async ({ page }) => {
   const productsPage = new ProductsPage(page);
@@ -46,6 +47,9 @@ test.only("New Full E2E Test", async ({ page }) => {
 
   const registerPage = new RegisterPage(page);
   await registerPage.signUpAsNewUser(email, password);
+
+  const deliveryDetails = new DeliveryDetails(page);
+  await deliveryDetails.fillDeliveryDetails();
 
   // await page.pause();
 });
