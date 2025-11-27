@@ -1,3 +1,5 @@
+import { expect } from "@playwright/test";
+
 export class DeliveryDetails {
   constructor(page) {
     this.page = page;
@@ -11,6 +13,9 @@ export class DeliveryDetails {
     this.saveAddressButton = page.locator('[data-qa="save-address-button"]');
     this.continueToPaymentButton = page.locator(
       '[data-qa="continue-to-payment-button"]'
+    );
+    this.saveAddressContainer = page.locator(
+      '[data-qa="saved-address-container"]'
     );
   }
 
@@ -27,10 +32,21 @@ export class DeliveryDetails {
     await this.cityInput.fill(usersAddress.city);
     await this.countryDropdown.waitFor();
     await this.countryDropdown.selectOption("Ukraine");
+  };
+
+  saveAddress = async () => {
+    const addressContainerCount = await this.saveAddressContainer.count();
     await this.saveAddressButton.waitFor();
     await this.saveAddressButton.click();
-    await this.page.pause();
+    await expect(this.saveAddressContainer).toHaveCount(
+      addressContainerCount + 1
+    );
+    await this.page.waitForTimeout(1000);
+  };
+
+  continueToPayment = async () => {
     await this.continueToPaymentButton.waitFor();
     await this.continueToPaymentButton.click();
+    await this.page.pause();
   };
 }

@@ -18,6 +18,6 @@ export class RegisterPage {
 
     await this.registerButton.click();
 
-    await this.page.waitForTimeout(3000);
+    await this.page.waitForTimeout(1000);
   };
 }

@@ -52,5 +52,8 @@ test.only("New Full E2E Test", async ({ page }) => {
   const deliveryDetails = new DeliveryDetails(page);
   await deliveryDetails.fillDeliveryDetails(usersAddress);
 
-  await page.pause();
+  await deliveryDetails.saveAddress();
+  await deliveryDetails.continueToPayment();
+
+  // await page.pause();
 });
