@@ -7,6 +7,7 @@ import { CheckoutPage } from "../page-objects/CheckoutPage.js";
 import { LoginPage } from "../page-objects/LoginPage.js";
 import { RegisterPage } from "../page-objects/RegisterPage.js";
 import { DeliveryDetails } from "../page-objects/DeliveryDetails.js";
+import { PaymentPage } from "../page-objects/PaymentPage.js";
 import { deliveryDetails as usersAddress } from "../data/deliveryDetails";
 
 test.only("New Full E2E Test", async ({ page }) => {
@@ -51,9 +52,11 @@ test.only("New Full E2E Test", async ({ page }) => {
 
   const deliveryDetails = new DeliveryDetails(page);
   await deliveryDetails.fillDeliveryDetails(usersAddress);
-
   await deliveryDetails.saveAddress();
   await deliveryDetails.continueToPayment();
+
+  const paymentPage = new PaymentPage(page);
+  await paymentPage.applyDiscount();
 
   // await page.pause();
 });
