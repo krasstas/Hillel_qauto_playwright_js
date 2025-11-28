@@ -56,7 +56,7 @@ export class DeliveryDetails {
     );
 
     await this.savedAddressFirstName.first().waitFor();
-    expect(await this.savedAddressFirstName.first().innerText()).toBe(
+    expect(await this.savedAddressFirstName.first()).toHaveText(
       await this.firstNameInput.inputValue()
     );
 
