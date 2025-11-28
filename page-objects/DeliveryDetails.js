@@ -60,6 +60,8 @@ export class DeliveryDetails {
       await this.firstNameInput.inputValue()
     );
 
+    // Верхний и нижний expect() одинаковые по смыслу, но с разной реализацией.
+
     await this.savedAddressLastName.first().waitFor();
     expect(await this.savedAddressLastName.first().innerText()).toBe(
       await this.lastNameInput.inputValue()
