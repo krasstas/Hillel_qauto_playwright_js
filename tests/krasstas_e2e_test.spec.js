@@ -59,5 +59,6 @@ test.only("New Full E2E Test", async ({ page }) => {
   const paymentPage = new PaymentPage(page);
   await paymentPage.applyDiscount();
   await paymentPage.fillPaymentDetails(paymentDetails);
+  await paymentPage.confirmPurchase();
   // await page.pause();
 });

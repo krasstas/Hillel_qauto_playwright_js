@@ -31,6 +31,12 @@ export class PaymentPage {
     await this.validUntilInput.fill(paymentDetails.expirationDate);
     await this.creditCardCvcInput.waitFor();
     await this.creditCardCvcInput.fill(paymentDetails.cardCVC);
+  };
+
+  confirmPurchase = async () => {
+    await this.payButton.waitFor();
+    await this.payButton.click();
     await this.page.pause();
+    await this.page.waitForURL(/\/thank-you/, { timeOut: 3000 });
   };
 }
