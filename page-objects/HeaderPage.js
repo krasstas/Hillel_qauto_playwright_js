@@ -15,6 +15,6 @@ export class HeaderPage {
   goToCheckout = async () => {
     await this.checkoutLink.waitFor();
     await this.checkoutLink.click();
-    await this.page.waitForURL("/basket");
+    await this.page.waitForURL("/basket", { timeOut: 1000 });
   };
 }

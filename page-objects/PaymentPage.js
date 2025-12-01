@@ -7,6 +7,11 @@ export class PaymentPage {
       .frameLocator('[data-qa="active-discount-container"]')
       .locator('[data-qa="discount-code"]');
     this.promoCodeInput = page.getByPlaceholder("Discount code");
+    this.creditCardOwnerInput = page.getByPlaceholder("Credit card owner");
+    this.creditCardNumberInput = page.getByPlaceholder("Credit card number");
+    this.validUntilInput = page.getByPlaceholder("Valid until");
+    this.creditCardCvcInput = page.getByPlaceholder("Credit card CVC");
+    this.payButton = page.getByRole("button", { name: "pay" });
   }
 
   applyDiscount = async () => {
@@ -15,6 +20,33 @@ export class PaymentPage {
     await this.promoCodeInput.waitFor();
     await this.promoCodeInput.fill(discountCode);
     await expect(this.promoCodeInput).toHaveValue(discountCode);
-    await this.page.pause();
+  };
+
+  fillPaymentDetails = async (paymentDetails) => {
+    await this.creditCardOwnerInput.waitFor();
+    await this.creditCardOwnerInput.fill(paymentDetails.cardOwner);
+    await this.creditCardNumberInput.waitFor();
+    await this.creditCardNumberInput.fill(paymentDetails.cardNumber);
+    await this.validUntilInput.waitFor();
+    await this.validUntilInput.fill(paymentDetails.expirationDate);
+    await this.creditCardCvcInput.waitFor();
+    await this.creditCardCvcInput.fill(paymentDetails.cardCVC);
+
+    await expect(this.creditCardOwnerInput).toHaveValue(
+      paymentDetails.cardOwner
+    );
+    await expect(this.creditCardNumberInput).toHaveValue(
+      paymentDetails.cardNumber
+    );
+    await expect(this.validUntilInput).toHaveValue(
+      paymentDetails.expirationDate
+    );
+    await expect(this.creditCardCvcInput).toHaveValue(paymentDetails.cardCVC);
+  };
+
+  confirmPurchase = async () => {
+    await this.payButton.waitFor();
+    await this.payButton.click();
+    await this.page.waitForURL(/\/thank-you/, { timeOut: 1000 });
   };
 }

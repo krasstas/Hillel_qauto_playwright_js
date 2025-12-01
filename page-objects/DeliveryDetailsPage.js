@@ -1,5 +1,5 @@
 import { expect } from "@playwright/test";
-export class DeliveryDetails {
+export class DeliveryDetailsPage {
   constructor(page) {
     this.page = page;
 
@@ -93,6 +93,6 @@ export class DeliveryDetails {
   continueToPayment = async () => {
     await this.continueToPaymentButton.waitFor();
     await this.continueToPaymentButton.click();
-    await this.page.waitForURL(/\/payment/, { timeout: 3000 });
+    await this.page.waitForURL(/\/payment/, { timeout: 1000 });
   };
 }

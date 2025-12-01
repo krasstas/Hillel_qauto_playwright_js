@@ -1,3 +1,4 @@
+import { expect } from "@playwright/test";
 export class RegisterPage {
   constructor(page) {
     this.page = page;
@@ -9,10 +10,13 @@ export class RegisterPage {
 
   signUpAsNewUser = async (email, password) => {
     await this.emailInput.waitFor();
+    await expect(this.emailInput).toBeVisible();
     await this.emailInput.fill(email);
     await this.passwordInput.waitFor();
+    await expect(this.passwordInput).toBeVisible();
     await this.passwordInput.fill(password);
     await this.registerButton.waitFor();
+    await expect(this.registerButton).toBeEnabled();
 
     await this.page.waitForTimeout(1000);
 
