@@ -32,7 +32,6 @@ test.only("Full E2E Test", async ({ page }) => {
   await loginPage.moveToSignupPage();
 
   const registerPage = new RegisterPage(page);
-
   await registerPage.signUpAsNewUser(userDetails);
 
   // Alternative use of UUID instead of a faker.
