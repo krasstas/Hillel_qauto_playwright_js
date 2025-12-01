@@ -31,6 +31,17 @@ export class PaymentPage {
     await this.validUntilInput.fill(paymentDetails.expirationDate);
     await this.creditCardCvcInput.waitFor();
     await this.creditCardCvcInput.fill(paymentDetails.cardCVC);
+
+    await expect(this.creditCardOwnerInput).toHaveValue(
+      paymentDetails.cardOwner
+    );
+    await expect(this.creditCardNumberInput).toHaveValue(
+      paymentDetails.cardNumber
+    );
+    await expect(this.validUntilInput).toHaveValue(
+      paymentDetails.expirationDate
+    );
+    await expect(this.creditCardCvcInput).toHaveValue(paymentDetails.cardCVC);
   };
 
   confirmPurchase = async () => {
