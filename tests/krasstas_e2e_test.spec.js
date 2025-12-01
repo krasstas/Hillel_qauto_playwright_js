@@ -9,6 +9,7 @@ import { RegisterPage } from "../page-objects/RegisterPage.js";
 import { DeliveryDetails } from "../page-objects/DeliveryDetails.js";
 import { PaymentPage } from "../page-objects/PaymentPage.js";
 import { deliveryDetails as usersAddress } from "../data/deliveryDetails";
+import { paymentDetails } from "../data/paymentDetails.js";
 
 test.only("New Full E2E Test", async ({ page }) => {
   const productsPage = new ProductsPage(page);
@@ -57,6 +58,6 @@ test.only("New Full E2E Test", async ({ page }) => {
 
   const paymentPage = new PaymentPage(page);
   await paymentPage.applyDiscount();
-
+  await paymentPage.fillPaymentDetails(paymentDetails);
   // await page.pause();
 });
