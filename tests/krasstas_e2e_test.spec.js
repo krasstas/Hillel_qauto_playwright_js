@@ -13,7 +13,7 @@ import { deliveryDetails as usersAddress } from "../data/deliveryDetails";
 import { paymentDetails } from "../data/paymentDetails.js";
 import { ThankYouPage } from "../page-objects/ThankYouPage.js";
 
-test.only("New Full E2E Test", async ({ page }) => {
+test.only("Full E2E Test", async ({ page }) => {
   const productsPage = new ProductsPage(page);
   await productsPage.visit();
   await productsPage.sortByCheapest();
@@ -33,7 +33,7 @@ test.only("New Full E2E Test", async ({ page }) => {
 
   const registerPage = new RegisterPage(page);
 
-  await registerPage.signUpAsNewUser(userDetails.email, userDetails.password);
+  await registerPage.signUpAsNewUser(userDetails);
 
   // Alternative use of UUID instead of a faker.
 
