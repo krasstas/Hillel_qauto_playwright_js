@@ -12,7 +12,9 @@ function getRandomExpirationDate() {
 
 export const paymentDetails = {
   cardOwner: faker.person.fullName(),
-  cardNumber: faker.finance.creditCardNumber(),
+  cardNumber: faker.finance.creditCardNumber({
+    issuer: "444[1-9]-####-####-###L",
+  }),
   expirationDate: getRandomExpirationDate(),
   cardCVC: faker.finance.creditCardCVV(),
 };
