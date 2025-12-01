@@ -6,10 +6,11 @@ import { HeaderPage } from "../page-objects/HeaderPage.js";
 import { CheckoutPage } from "../page-objects/CheckoutPage.js";
 import { LoginPage } from "../page-objects/LoginPage.js";
 import { RegisterPage } from "../page-objects/RegisterPage.js";
-import { DeliveryDetails } from "../page-objects/DeliveryDetails.js";
+import { DeliveryDetailsPage } from "../page-objects/DeliveryDetailsPage.js";
 import { PaymentPage } from "../page-objects/PaymentPage.js";
 import { deliveryDetails as usersAddress } from "../data/deliveryDetails";
 import { paymentDetails } from "../data/paymentDetails.js";
+import { ThankYouPage } from "../page-objects/ThankYouPage.js";
 
 test.only("New Full E2E Test", async ({ page }) => {
   const productsPage = new ProductsPage(page);
@@ -31,8 +32,11 @@ test.only("New Full E2E Test", async ({ page }) => {
 
   const registerPage = new RegisterPage(page);
 
+  // Alternative use of UUID instead of a faker.
+
   // const emailId = uuidv4();
   // const email = emailId + "@testmail.com";
+
   const email = faker.internet.email({ provider: "testmail.com" });
 
   let password = faker.internet.password({
@@ -51,7 +55,7 @@ test.only("New Full E2E Test", async ({ page }) => {
   }
   await registerPage.signUpAsNewUser(email, password);
 
-  const deliveryDetails = new DeliveryDetails(page);
+  const deliveryDetails = new DeliveryDetailsPage(page);
   await deliveryDetails.fillDeliveryDetails(usersAddress);
   await deliveryDetails.saveAddress();
   await deliveryDetails.continueToPayment();
@@ -60,5 +64,8 @@ test.only("New Full E2E Test", async ({ page }) => {
   await paymentPage.applyDiscount();
   await paymentPage.fillPaymentDetails(paymentDetails);
   await paymentPage.confirmPurchase();
+
+  const thankYouPage = new ThankYouPage(page);
+  await thankYouPage.BackToShopMainPage();
   // await page.pause();
 });

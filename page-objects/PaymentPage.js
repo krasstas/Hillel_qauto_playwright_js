@@ -36,7 +36,6 @@ export class PaymentPage {
   confirmPurchase = async () => {
     await this.payButton.waitFor();
     await this.payButton.click();
-    await this.page.pause();
-    await this.page.waitForURL(/\/thank-you/, { timeOut: 3000 });
+    await this.page.waitForURL(/\/thank-you/, { timeOut: 1000 });
   };
 }

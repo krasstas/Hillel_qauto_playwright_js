@@ -10,7 +10,7 @@ export class ProductsPage {
   }
 
   visit = async () => {
-    await this.page.goto("/");
+    await this.page.goto("/", { timeOut: 1000 });
   };
 
   addItemToCart = async (index) => {
