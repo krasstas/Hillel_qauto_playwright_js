@@ -14,7 +14,6 @@ export class ThankYouPage {
 
   BackToShopMainPage = async () => {
     await this.backToShopButton.waitFor();
-    await this.page.pause();
     await expect(this.thankYouPageTitle).toHaveText(
       "Thank you for shopping with us!"
     );
