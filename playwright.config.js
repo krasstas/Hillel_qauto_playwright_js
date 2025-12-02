@@ -18,13 +18,17 @@ const { devices } = require("@playwright/test");
 const config = {
   testDir: "./tests",
   /* Maximum time one test can run for. */
-  timeout: 5 * 1000,
+<<<<<<< playwright.config.js
+  timeout: 30 * 1000,
+=======
+  timeout: 3 * 1000,
+>>>>>>> playwright.config.js
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 5000,
+    timeout: 30000,
   },
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -58,26 +62,23 @@ const config = {
         ...devices["Desktop Chrome"],
       },
     },
-
     // {
     //   name: "firefox",
     //   use: {
     //     ...devices["Desktop Firefox"],
     //   },
     // },
-
     // {
     //   name: "webkit",
     //   use: {
     //     ...devices["Desktop Safari"],
     //   },
     // },
-
     /* Test against mobile viewports. */
     // {
-    //   name: 'Mobile Chrome',
+    //   name: "Mobile Chrome",
     //   use: {
-    //     ...devices['Pixel 5'],
+    //     ...devices["Pixel 5"],
     //   },
     // },
     // {
@@ -86,7 +87,6 @@ const config = {
     //     ...devices['iPhone 12'],
     //   },
     // },
-
     /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
