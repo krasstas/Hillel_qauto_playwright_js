@@ -13,7 +13,7 @@ import { deliveryDetails as usersAddress } from "../data/deliveryDetails";
 import { paymentDetails } from "../data/paymentDetails.js";
 import { ThankYouPage } from "../page-objects/ThankYouPage.js";
 
-test.only("Full E2E Test", async ({ page }) => {
+test("Full E2E Test", async ({ page }) => {
   const productsPage = new ProductsPage(page);
   await productsPage.visit();
   await productsPage.sortByCheapest();
