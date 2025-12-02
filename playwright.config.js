@@ -18,11 +18,7 @@ const { devices } = require("@playwright/test");
 const config = {
   testDir: "./tests",
   /* Maximum time one test can run for. */
-<<<<<<< playwright.config.js
   timeout: 30 * 1000,
-=======
-  timeout: 3 * 1000,
->>>>>>> playwright.config.js
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
