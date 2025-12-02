@@ -1,4 +1,5 @@
 import { HeaderPage } from "./HeaderPage.js";
+import { isDesktopViewport } from "../utils/isDesktopViewport";
 import { expect } from "@playwright/test";
 export class ProductsPage {
   constructor(page) {
@@ -17,12 +18,20 @@ export class ProductsPage {
     const specificAddButton = this.addButtons.nth(index);
     await specificAddButton.waitFor();
     await expect(specificAddButton).toHaveText("Add to Basket");
+
     const headerPage = new HeaderPage(this.page);
-    const cartCountBeforAdding = await headerPage.getCartCount();
+
+    // A variable declared with 'let' can be created without an initial value and assigned later.
+    let cartCountBeforAdding;
+    if (isDesktopViewport(this.page)) {
+      cartCountBeforAdding = await headerPage.getCartCount();
+    }
     await specificAddButton.click();
     await expect(specificAddButton).toHaveText("Remove from Basket");
-    const cartCountAfterAdding = await headerPage.getCartCount();
-    expect(cartCountAfterAdding).toBeGreaterThan(cartCountBeforAdding);
+    if (isDesktopViewport(this.page)) {
+      const cartCountAfterAdding = await headerPage.getCartCount();
+      expect(cartCountAfterAdding).toBeGreaterThan(cartCountBeforAdding);
+    }
   };
 
   sortByCheapest = async () => {
