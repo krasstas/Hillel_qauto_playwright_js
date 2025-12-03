@@ -11,7 +11,6 @@ export class MyAccountPage {
   };
 
   waitForPageTitle = async () => {
-    await this.myAccountPageTitle.waitFor();
     await expect(this.myAccountPageTitle).toHaveText("My Account");
   };
 }
