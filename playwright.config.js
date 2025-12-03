@@ -4,12 +4,15 @@
 /// <reference types="node" />
 
 const { devices } = require("@playwright/test");
+const path = require("path");
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
+require("dotenv").config({
+  path: path.resolve(__dirname, ".env"), // <-- гарантированно загружает .env
+});
 
 /**
  * @see https://playwright.dev/docs/test-configuration

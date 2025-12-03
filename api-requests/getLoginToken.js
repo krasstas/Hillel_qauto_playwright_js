@@ -1,6 +1,7 @@
 import * as nodeFetch from "node-fetch";
 
 export const getLoginToken = async (userApiLoginDetails) => {
+  console.warn("LOGIN CREDS:", userApiLoginDetails);
   const response = await nodeFetch("http://localhost:2221/api/login", {
     method: "POST",
     body: JSON.stringify({
