@@ -7,7 +7,7 @@ import { LoginPage } from "../page-objects/LoginPage.js";
 import { RegisterPage } from "../page-objects/RegisterPage.js";
 import { DeliveryDetailsPage } from "../page-objects/DeliveryDetailsPage.js";
 import { PaymentPage } from "../page-objects/PaymentPage.js";
-import { userDetails } from "../data/userDetails.js";
+import { userRegistrationDetails } from "../data/userDetails.js";
 
 import { deliveryDetails as usersAddress } from "../data/deliveryDetails";
 import { paymentDetails } from "../data/paymentDetails.js";
@@ -32,7 +32,7 @@ test("Full E2E Test", async ({ page }) => {
   await loginPage.moveToSignupPage();
 
   const registerPage = new RegisterPage(page);
-  await registerPage.signUpAsNewUser(userDetails);
+  await registerPage.signUpAsNewUser(userRegistrationDetails);
 
   // Alternative use of UUID instead of a faker.
 

@@ -1,11 +1,11 @@
 import * as nodeFetch from "node-fetch";
 
-export const getLoginToken = async () => {
+export const getLoginToken = async (userApiLoginDetails) => {
   const response = await nodeFetch("http://localhost:2221/api/login", {
     method: "POST",
     body: JSON.stringify({
-      username: "q@q",
-      password: "123",
+      username: userApiLoginDetails.login,
+      password: userApiLoginDetails.password,
     }),
   });
   if (response.status !== 200) {

@@ -21,7 +21,11 @@ const generateValidPassword = () => {
   return password;
 };
 
-export const userDetails = {
+export const userRegistrationDetails = {
   email: faker.internet.email({ provider: "testmail.com" }),
   password: generateValidPassword(),
+};
+export const userApiLoginDetails = {
+  login: "q@q",
+  password: "123",
 };
