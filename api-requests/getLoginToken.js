@@ -9,7 +9,7 @@ export const getLoginToken = async () => {
     }),
   });
   if (response.status !== 200) {
-    throw new Error("Incorrect credentials fo getting login token!");
+    throw new Error("Incorrect credentials for getting login token!");
   }
   const responseBody = await response.json();
   return responseBody.token;
