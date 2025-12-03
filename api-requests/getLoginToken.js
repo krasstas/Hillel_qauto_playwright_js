@@ -4,8 +4,8 @@ export const getLoginToken = async () => {
   const response = await nodeFetch("http://localhost:2221/api/login", {
     method: "POST",
     body: JSON.stringify({
-      username: "supremewizard81@gmail.com",
-      password: "1qaz!!QQAAZZ",
+      username: "q@q",
+      password: "123",
     }),
   });
   if (response.status !== 200) {
