@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 
 // Generating a valid password with rules
-function generateValidPassword() {
+const generateValidPassword = () => {
   let password = faker.internet.password({
     length: faker.number.int({ min: 8, max: 15 }),
     exclude: " ",
@@ -19,9 +19,14 @@ function generateValidPassword() {
   }
 
   return password;
-}
+};
 
-export const userDetails = {
+export const userRegistrationDetails = {
   email: faker.internet.email({ provider: "testmail.com" }),
   password: generateValidPassword(),
+};
+
+export const userApiLoginDetails = {
+  login: "q@q",
+  password: process.env.ADMIN_PASSWORD,
 };
