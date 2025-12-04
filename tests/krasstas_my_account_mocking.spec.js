@@ -6,7 +6,7 @@ import { MyAccountPageMocking } from "../page-objects/MyAccountPageMocking.js";
 import { getLoginToken } from "../api-requests/getLoginToken.js";
 import { userApiLoginDetails } from "../data/userDetails.js";
 
-test.only("My account using coockie injection and mocking network request", async ({
+test("My account using coockie injection and mocking network request", async ({
   page,
 }) => {
   const loginToken = await getLoginToken(userApiLoginDetails);
