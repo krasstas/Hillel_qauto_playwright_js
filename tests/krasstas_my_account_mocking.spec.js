@@ -2,7 +2,7 @@
 // dotenv.config();
 // dotenv добавлен НАПРЯМУЮ в playwright.config, по этому тут закомментирован.
 import { test } from "@playwright/test";
-import { MyAccountPage } from "../page-objects/MyAccountPage.js";
+import { MyAccountPageMocking } from "../page-objects/MyAccountPageMocking.js";
 import { getLoginToken } from "../api-requests/getLoginToken.js";
 import { userApiLoginDetails } from "../data/userDetails.js";
 
@@ -17,7 +17,7 @@ test.only("My account using coockie injection and mocking network request", asyn
       body: JSON.stringify({ message: "Server not responding" }),
     });
   });
-  const myAccountPage = new MyAccountPage(page);
+  const myAccountPage = new MyAccountPageMocking(page);
   await myAccountPage.visit();
 
   await page.evaluate(
@@ -28,8 +28,7 @@ test.only("My account using coockie injection and mocking network request", asyn
   );
 
   await myAccountPage.visit();
-  await myAccountPage.visit();
   await myAccountPage.waitForPageTitle();
   await myAccountPage.waitForServerErrorMessage();
-  await page.pause();
+  // await page.pause();
 });

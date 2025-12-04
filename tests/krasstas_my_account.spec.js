@@ -20,5 +20,5 @@ test.only("My account using coockie injection", async ({ page }) => {
 
   await myAccountPage.visit();
   await myAccountPage.waitForPageTitle();
-  await page.pause();
+  // await page.pause();
 });
