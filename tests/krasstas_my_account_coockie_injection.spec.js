@@ -6,7 +6,7 @@ import { MyAccountPage } from "../page-objects/MyAccountPage.js";
 import { getLoginToken } from "../api-requests/getLoginToken.js";
 import { userApiLoginDetails } from "../data/userDetails.js";
 
-test.only("My account using coockie injection", async ({ page }) => {
+test("My account using coockie injection", async ({ page }) => {
   const loginToken = await getLoginToken(userApiLoginDetails);
   const myAccountPage = new MyAccountPage(page);
   await myAccountPage.visit();
