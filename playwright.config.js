@@ -44,7 +44,7 @@ const config = {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: "http://localhost:2221",
+    baseURL: "https://guest:welcome2qauto@qauto.forstudy.space/",
 
     headless: false,
     slowMo: 500,
