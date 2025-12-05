@@ -6,11 +6,11 @@
   "scripts": {
     "test": "playwright test --headed",
     "ui": "playwright test --ui",
-    "codegen": "playwright codegen http://localhost:2221"
+    "codegen": "playwright codegen https://guest:welcome2qauto@qauto.forstudy.space/"
   },
   "repository": {
     "type": "git",
-    "url": "git@git.dzencode.com:crm.36773/stanislavk_playwright_tests.git"
+    "url": "git@git.dzencode.com:crm.36773/qauto_playwright_js.git"
   },
   "keywords": [],
   "author": "",
