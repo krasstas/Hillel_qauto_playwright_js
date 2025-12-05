@@ -1,4 +1,4 @@
-export class LoginPage {
+export class SignInPage {
   constructor(page) {
     this.page = page;
 
