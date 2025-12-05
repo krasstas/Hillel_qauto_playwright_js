@@ -1,6 +1,6 @@
 // import * as dotenv from "dotenv";
 // dotenv.config();
-// dotenv добавлен НАПРЯМУЮ в playwright.config, по этому тут закомментирован.
+// dotenv добавлен НАПРЯМУЮ в playwright.config, поэтому тут закомментирован.
 import { test } from "@playwright/test";
 import { MyAccountPageMocking } from "../page-objects/MyAccountPageMocking.js";
 import { getLoginToken } from "../api-requests/getLoginToken.js";
