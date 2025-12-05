@@ -23,7 +23,9 @@ test.skip("homepage has title and links to intro page", async ({ page }) => {
   await page.pause();
 });
 
-test.skip("11111", async ({ page }) => {
+test.skip("Duplicate the same test example for multi-launch", async ({
+  page,
+}) => {
   await page.goto("https://playwright.dev/");
 
   // Expect a title "to contain" a substring.

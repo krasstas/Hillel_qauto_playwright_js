@@ -1,6 +1,6 @@
 // import * as dotenv from "dotenv";
 // dotenv.config();
-// dotenv добавлен НАПРЯМУЮ в playwright.config, по этому тут закомментирован.
+// dotenv добавлен НАПРЯМУЮ в playwright.config, поэтому тут закомментирован.
 import { test } from "@playwright/test";
 import { MyAccountPage } from "../page-objects/MyAccountPage.js";
 import { getLoginToken } from "../api-requests/getLoginToken.js";
@@ -17,6 +17,7 @@ test("My account using coockie injection", async ({ page }) => {
     },
     [loginToken]
   );
+  // loginTokenInsideBrowserCode - это (можно использовать любое) имя локальной переменной, которой будет доступно значение [loginToken] внутри браузера.
 
   await myAccountPage.visit();
   await myAccountPage.waitForPageTitle();
