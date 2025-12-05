@@ -17,6 +17,7 @@ test("My account using coockie injection", async ({ page }) => {
     },
     [loginToken]
   );
+  // loginTokenInsideBrowserCode - это (можно использовать любое) имя локальной переменной, которой будет доступно значение [loginToken] внутри браузера.
 
   await myAccountPage.visit();
   await myAccountPage.waitForPageTitle();
