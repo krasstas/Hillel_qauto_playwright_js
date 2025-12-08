@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test } from "@playwright/test";
 
 test("qauto_sign_up_test", async ({ page }) => {
   await page.goto("https://guest:welcome2qauto@qauto.forstudy.space/");
