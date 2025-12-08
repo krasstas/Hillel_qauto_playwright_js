@@ -1,11 +1,45 @@
 import { expect } from "@playwright/test";
-export class SignUpPage {
+export class HomePage {
   constructor(page) {
     this.page = page;
 
-    this.emailInput = page.getByPlaceholder("E-Mail");
-    this.passwordInput = page.getByPlaceholder("Password");
-    this.registerButton = page.getByRole("button", { name: "Register" });
+    this.header = page.locator("header");
+
+    this.pageTitle = page.getByRole("heading", { name: "Do more!" });
+    this.heroDescription = page.getByText(
+      "With the help of the Hillel auto project"
+    );
+    this.signUpButton = page.getByRole("button", { name: "Sign up" });
+    this.heroVideoIframe = page
+      .frameLocator('iframe.hero-video_frame[src*="youtube.com/embed"]')
+      .locator("#player");
+
+    this.aboutSection = page.locator("#aboutSection");
+
+    this.aboutBlockFuelExpenses = this.aboutSection
+      .locator(".about-block")
+      .nth(0);
+    this.aboutBlockFuelExpensesImage = this.aboutBlockFuelExpenses.locator(
+      "img.about-picture-img"
+    );
+    this.aboutBlockFuelExpensesTitle =
+      this.aboutBlockFuelExpenses.getByText("Log fuel expenses");
+    this.aboutBlockFuelExpensesText = this.aboutBlockFuelExpenses.getByText(
+      "Keep track of your replacement"
+    );
+
+    this.aboutBlockInstructions = this.aboutSection
+      .locator(".about-block")
+      .nth(0);
+    this.aboutBlockInstructionsImage = this.aboutBlockInstructions.locator(
+      "img.about-picture-img"
+    );
+    this.aboutBlockInstructionsTitle = this.aboutBlockInstructions.getByText(
+      "Instructions and manuals"
+    );
+    this.aboutBlockInstructionsText = this.aboutBlockInstructions.getByText(
+      "Watch over 100 instructions"
+    );
   }
 
   signUpAsNewUser = async (userRegistrationDetails) => {
