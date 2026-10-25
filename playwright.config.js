@@ -3,8 +3,8 @@
 /* global process */
 /// <reference types="node" />
 
-const { devices } = require("@playwright/test");
-const path = require("path");
+const { devices } = require('@playwright/test');
+const path = require('path');
 
 /**
  * Read environment variables from file.
@@ -16,7 +16,7 @@ const path = require("path");
  * @type {import('@playwright/test').PlaywrightTestConfig}
  */
 const config = {
-  testDir: "./tests",
+  testDir: './tests',
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {
@@ -27,7 +27,7 @@ const config = {
     timeout: 30000,
   },
 
-  globalSetup: require.resolve("./globalSetup.js"),
+  globalSetup: require.resolve('./globalSetup.js'),
 
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -36,32 +36,32 @@ const config = {
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 1 : 4,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ["list"], // Красивый вывод в терминале
-    ["html", { open: "on-finish" }], // Генерирует HTML + авто-открытие
+    ['list'], // Красивый вывод в терминале
+    ['html', { open: 'on-finish' }], // Генерирует HTML + авто-открытие
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: "https://guest:welcome2qauto@qauto.forstudy.space/",
+    baseURL: 'https://guest:welcome2qauto@qauto.forstudy.space/',
 
     headless: false,
     slowMo: 500,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: "on-first-retry",
+    trace: 'on-first-retry',
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: "chromium",
+      name: 'chromium',
       use: {
-        ...devices["Desktop Chrome"],
+        ...devices['Desktop Chrome'],
       },
     },
     // {
@@ -77,12 +77,12 @@ const config = {
     //   },
     // },
     /* Test against mobile viewports. */
-    {
-      name: "Mobile Chrome",
-      use: {
-        ...devices["Pixel 5"],
-      },
-    },
+    // {
+    //   name: "Mobile Chrome",
+    //   use: {
+    //     ...devices["Pixel 5"],
+    //   },
+    // },
     // {
     //   name: 'Mobile Safari',
     //   use: {
