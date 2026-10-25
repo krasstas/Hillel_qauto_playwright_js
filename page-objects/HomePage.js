@@ -1,44 +1,47 @@
-import { expect } from "@playwright/test";
-export class HomePage {
+import { expect } from '@playwright/test';
+import { BasePageObject } from './BasePageObject.page.js';
+import { BaseComponent } from '../utils/components/BaseComponent.js';
+
+export class HomePage extends BasePageObject {
   constructor(page) {
-    this.page = page;
+    super(page);
 
-    this.header = page.locator("header");
+    this.header = page.locator('header');
 
-    this.pageTitle = page.getByRole("heading", { name: "Do more!" });
+    this.pageTitle = page.getByRole('heading', { name: 'Do more!' });
     this.heroDescription = page.getByText(
-      "With the help of the Hillel auto project"
+      'With the help of the Hillel auto project',
     );
-    this.signUpButton = page.getByRole("button", { name: "Sign up" });
+    this.signUpButton = page.getByRole('button', { name: 'Sign up' });
     this.heroVideoIframe = page
       .frameLocator('iframe.hero-video_frame[src*="youtube.com/embed"]')
-      .locator("#player");
+      .locator('#player');
 
-    this.aboutSection = page.locator("#aboutSection");
+    this.aboutSection = page.locator('#aboutSection');
 
     this.aboutBlockFuelExpenses = this.aboutSection
-      .locator(".about-block")
+      .locator('.about-block')
       .nth(0);
     this.aboutBlockFuelExpensesImage = this.aboutBlockFuelExpenses.locator(
-      "img.about-picture-img"
+      'img.about-picture-img',
     );
     this.aboutBlockFuelExpensesTitle =
-      this.aboutBlockFuelExpenses.getByText("Log fuel expenses");
+      this.aboutBlockFuelExpenses.getByText('Log fuel expenses');
     this.aboutBlockFuelExpensesText = this.aboutBlockFuelExpenses.getByText(
-      "Keep track of your replacement"
+      'Keep track of your replacement',
     );
 
     this.aboutBlockInstructions = this.aboutSection
-      .locator(".about-block")
+      .locator('.about-block')
       .nth(0);
     this.aboutBlockInstructionsImage = this.aboutBlockInstructions.locator(
-      "img.about-picture-img"
+      'img.about-picture-img',
     );
     this.aboutBlockInstructionsTitle = this.aboutBlockInstructions.getByText(
-      "Instructions and manuals"
+      'Instructions and manuals',
     );
     this.aboutBlockInstructionsText = this.aboutBlockInstructions.getByText(
-      "Watch over 100 instructions"
+      'Watch over 100 instructions',
     );
   }
 

@@ -1,11 +1,14 @@
-import { expect } from "@playwright/test";
-export class SignUpPage {
-  constructor(page) {
-    this.page = page;
+import { expect } from '@playwright/test';
+import { BasePageObject } from './BasePageObject.page.js';
+import { BaseComponent } from '../utils/components/BaseComponent.js';
 
-    this.emailInput = page.getByPlaceholder("E-Mail");
-    this.passwordInput = page.getByPlaceholder("Password");
-    this.registerButton = page.getByRole("button", { name: "Register" });
+export class SignUpPage extends BasePageObject {
+  constructor(page) {
+    super(page);
+
+    this.emailInput = page.getByPlaceholder('E-Mail');
+    this.passwordInput = page.getByPlaceholder('Password');
+    this.registerButton = page.getByRole('button', { name: 'Register' });
   }
 
   signUpAsNewUser = async (userRegistrationDetails) => {
